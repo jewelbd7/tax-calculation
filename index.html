@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bangladesh personal income tax estimate calculator in Bangla and English.">
+  <title>Bangladesh Income Tax Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">৳</span><div><strong data-i18n="brand">Bangladesh Income Tax Calculator</strong><small data-i18n="subtitle">Personal tax estimate • বাংলা ও English</small></div></div>
+    <button id="languageBtn" class="lang-btn" type="button">বাংলা</button>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <span class="eyebrow" data-i18n="eyebrow">TAX YEAR 2026–27</span>
+      <h1 data-i18n="heading">Calculate your income tax</h1>
+      <p data-i18n="intro">Enter your annual income, eligible investment and tax already paid to get an estimate.</p>
+    </section>
+
+    <section class="layout">
+      <form id="taxForm" class="panel">
+        <div class="section-heading"><h2 data-i18n="incomeTitle">Income details</h2><span class="step">01</span></div>
+        <label for="grossSalary" data-i18n="grossSalary">Annual gross salary (BDT)</label>
+        <input id="grossSalary" type="number" min="0" step="1" value="1065225">
+
+        <label for="salaryExempt" data-i18n="salaryExempt">Salary income exempt under applicable rules (BDT)</label>
+        <input id="salaryExempt" type="number" min="0" step="1" value="0">
+        <p class="hint" data-i18n="salaryHint">Enter only the salary exemption allowed by tax rules. The personal tax-free threshold is applied later in the tax slab; do not deduct it here.</p>
+
+        <label for="otherIncome" data-i18n="otherIncome">Other taxable income (BDT)</label>
+        <input id="otherIncome" type="number" min="0" step="1" value="0">
+
+        <div class="section-heading section-gap"><h2 data-i18n="investmentTitle">Investment & tax paid</h2><span class="step">02</span></div>
+        <label for="investment" data-i18n="investment">Eligible investment for rebate (BDT)</label>
+        <input id="investment" type="number" min="0" step="1" value="0">
+        <p class="hint" data-i18n="investmentHint">Enter only investments that qualify under the applicable law and limits.</p>
+
+        <label for="tds" data-i18n="tds">Tax deducted at source / TDS (BDT)</label>
+        <input id="tds" type="number" min="0" step="1" value="0">
+
+        <label for="advanceTax" data-i18n="advanceTax">Advance tax paid (BDT)</label>
+        <input id="advanceTax" type="number" min="0" step="1" value="0">
+
+        <div class="actions">
+          <button class="primary" type="submit" data-i18n="calculate">Calculate tax</button>
+          <button class="secondary" id="resetBtn" type="button" data-i18n="reset">Reset</button>
+        </div>
+      </form>
+
+      <section class="panel result-panel" aria-live="polite">
+        <div class="section-heading"><h2 data-i18n="resultTitle">Calculation summary</h2><span class="step">03</span></div>
+        <div class="result-highlight"><span data-i18n="payable">Estimated net tax payable</span><strong id="netPayable">৳0</strong><small id="resultNote" data-i18n="resultNote">Estimate only — verify before filing.</small></div>
+        <div class="summary-list">
+          <div><span data-i18n="taxableIncome">Taxable total income</span><strong id="taxableIncome">৳0</strong></div>
+          <div><span data-i18n="grossTax">Tax before rebate</span><strong id="grossTax">৳0</strong></div>
+          <div><span data-i18n="rebate">Investment tax rebate</span><strong id="rebate">৳0</strong></div>
+          <div><span data-i18n="minimumTax">Minimum tax applied</span><strong id="minimumTax">৳0</strong></div>
+          <div><span data-i18n="taxAfterRebate">Tax after rebate</span><strong id="taxAfterRebate">৳0</strong></div>
+          <div><span data-i18n="taxPaid">TDS + advance tax</span><strong id="taxPaid">৳0</strong></div>
+        </div>
+        <h3 data-i18n="slabTitle">Progressive slab breakdown</h3>
+        <div class="table-wrap"><table><thead><tr><th data-i18n="slab">Slab</th><th data-i18n="rate">Rate</th><th data-i18n="amount">Taxable amount</th><th data-i18n="tax">Tax</th></tr></thead><tbody id="slabRows"></tbody></table></div>
+        <p class="due-note" id="dueNote"></p>
+        <button class="secondary full" id="printBtn" type="button" data-i18n="print">Print / Save as PDF</button>
+      </section>
+    </section>
+
+    <footer>
+      <p data-i18n="disclaimer">Disclaimer: This is an educational estimate, not official NBR software or professional tax advice. Tax rules, exemptions, rebate eligibility, minimum tax and special categories may change. Check the latest NBR guidance before filing.</p>
+      <p><span data-i18n="official">Official reference:</span> <a href="https://nbr.gov.bd/publications/income-tax/100/eng" target="_blank" rel="noopener">NBR Income Tax Publications</a></p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
